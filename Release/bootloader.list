@@ -7,31 +7,33 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         000000f8  08000188  08000188  00001188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000000  08000280  08000288  00001288  2**0
+  2 .custom_block 0000000a  20000100  20000100  00002100  2**0
+                  ALLOC
+  3 .rodata       00000000  08000280  08000288  00001288  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .ARM.extab    00000000  08000280  08000280  00001288  2**0
+  4 .ARM.extab    00000000  08000280  08000280  00001288  2**0
                   CONTENTS, READONLY
-  4 .ARM          00000000  08000280  08000280  00001288  2**0
+  5 .ARM          00000000  08000280  08000280  00001288  2**0
                   CONTENTS, READONLY
-  5 .preinit_array 00000000  08000280  08000288  00001288  2**0
+  6 .preinit_array 00000000  08000280  08000288  00001288  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08000280  08000280  00001280  2**2
+  7 .init_array   00000004  08000280  08000280  00001280  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  08000284  08000284  00001284  2**2
+  8 .fini_array   00000004  08000284  08000284  00001284  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000000  20000000  20000000  00001288  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  9 .ccmram       00000000  10000000  10000000  00001288  2**0
+  9 .data         00000002  2000010a  08000288  0000210a  2**0
+                  ALLOC
+ 10 .ccmram       00000000  10000000  10000000  00001288  2**0
                   CONTENTS
- 10 .bss          0000001c  20000000  20000000  00002000  2**2
+ 11 .bss          0000001c  2000010c  2000010c  00002100  2**2
                   ALLOC
- 11 ._user_heap_stack 00000604  2000001c  2000001c  00002000  2**0
+ 12 ._user_heap_stack 00000600  20000128  20000128  00002100  2**0
                   ALLOC
- 12 .ARM.attributes 00000030  00000000  00000000  00001288  2**0
+ 13 .ARM.attributes 00000030  00000000  00000000  00001288  2**0
                   CONTENTS, READONLY
- 13 .comment      00000043  00000000  00000000  000012b8  2**0
+ 14 .comment      00000043  00000000  00000000  000012b8  2**0
                   CONTENTS, READONLY
- 14 .debug_frame  0000002c  00000000  00000000  000012fc  2**2
+ 15 .debug_frame  0000002c  00000000  00000000  000012fc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -48,7 +50,7 @@ Disassembly of section .text:
  800019a:	2301      	movs	r3, #1
  800019c:	7023      	strb	r3, [r4, #0]
  800019e:	bd10      	pop	{r4, pc}
- 80001a0:	20000000 	.word	0x20000000
+ 80001a0:	2000010c 	.word	0x2000010c
  80001a4:	00000000 	.word	0x00000000
  80001a8:	08000268 	.word	0x08000268
 
@@ -61,7 +63,7 @@ Disassembly of section .text:
  80001b6:	f3af 8000 	nop.w
  80001ba:	bd08      	pop	{r3, pc}
  80001bc:	00000000 	.word	0x00000000
- 80001c0:	20000004 	.word	0x20000004
+ 80001c0:	20000110 	.word	0x20000110
  80001c4:	08000268 	.word	0x08000268
 
 080001c8 <main>:
@@ -105,11 +107,11 @@ Disassembly of section .text:
 08000202 <LoopForever>:
  8000202:	e7fe      	b.n	8000202 <LoopForever>
  8000204:	20020000 	.word	0x20020000
- 8000208:	20000000 	.word	0x20000000
- 800020c:	20000000 	.word	0x20000000
+ 8000208:	2000010c 	.word	0x2000010c
+ 800020c:	2000010c 	.word	0x2000010c
  8000210:	08000288 	.word	0x08000288
- 8000214:	20000000 	.word	0x20000000
- 8000218:	2000001c 	.word	0x2000001c
+ 8000214:	2000010c 	.word	0x2000010c
+ 8000218:	20000128 	.word	0x20000128
 
 0800021c <ADC_IRQHandler>:
  800021c:	e7fe      	b.n	800021c <ADC_IRQHandler>
@@ -117,18 +119,18 @@ Disassembly of section .text:
 
 08000220 <__libc_init_array>:
  8000220:	b570      	push	{r4, r5, r6, lr}
- 8000222:	4d0d      	ldr	r5, [pc, #52]	@ (8000258 <__libc_init_array+0x38>)
- 8000224:	4c0d      	ldr	r4, [pc, #52]	@ (800025c <__libc_init_array+0x3c>)
- 8000226:	1b64      	subs	r4, r4, r5
- 8000228:	10a4      	asrs	r4, r4, #2
+ 8000222:	4b0d      	ldr	r3, [pc, #52]	@ (8000258 <__libc_init_array+0x38>)
+ 8000224:	4d0d      	ldr	r5, [pc, #52]	@ (800025c <__libc_init_array+0x3c>)
+ 8000226:	1b5b      	subs	r3, r3, r5
+ 8000228:	109c      	asrs	r4, r3, #2
  800022a:	2600      	movs	r6, #0
  800022c:	42a6      	cmp	r6, r4
  800022e:	d109      	bne.n	8000244 <__libc_init_array+0x24>
- 8000230:	4d0b      	ldr	r5, [pc, #44]	@ (8000260 <__libc_init_array+0x40>)
- 8000232:	4c0c      	ldr	r4, [pc, #48]	@ (8000264 <__libc_init_array+0x44>)
- 8000234:	f000 f818 	bl	8000268 <_init>
- 8000238:	1b64      	subs	r4, r4, r5
- 800023a:	10a4      	asrs	r4, r4, #2
+ 8000230:	f000 f81a 	bl	8000268 <_init>
+ 8000234:	4d0a      	ldr	r5, [pc, #40]	@ (8000260 <__libc_init_array+0x40>)
+ 8000236:	4b0b      	ldr	r3, [pc, #44]	@ (8000264 <__libc_init_array+0x44>)
+ 8000238:	1b5b      	subs	r3, r3, r5
+ 800023a:	109c      	asrs	r4, r3, #2
  800023c:	2600      	movs	r6, #0
  800023e:	42a6      	cmp	r6, r4
  8000240:	d105      	bne.n	800024e <__libc_init_array+0x2e>
