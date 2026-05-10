@@ -3,6 +3,6 @@
 
 #include "stm32f4xx.h"
 
-void boot_uart_init(void);
+void system_uart_init(void);
 
 #endif

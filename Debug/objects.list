@@ -1,3 +1,4 @@
+"./Src/bsp.o"
 "./Src/fpu.o"
 "./Src/main.o"
 "./Src/syscalls.o"

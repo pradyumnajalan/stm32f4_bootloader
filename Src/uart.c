@@ -14,7 +14,7 @@ int __io_putchar(int ch){
 	return ch;
 }
 
-void boot_uart_init(void){
+void system_uart_init(void){
 
 	/* Enable GPIOD Clock*/
 
@@ -49,6 +49,13 @@ void boot_uart_init(void){
 	/*Enable USART2 RX*/
 	USART2->CR1 |= USART_CR1_RE;
 
+	/*Enable USART2 RX interrupt*/
+
+	USART2->CR1 |= USART_CR1_RXNEIE;
+
+	/*Enable USART2 Receive interrupt handler in NVIC*/
+	NVIC_EnableIRQ(USART2_IRQn);
+
 	/*Enable USART2*/
 	USART2->CR1 |= USART_CR1_UE;
 
@@ -64,7 +71,6 @@ static void uart_write(int ch){
 	USART2->DR = 0xFF & ch;
 
 }
-
 
 static uint16_t compute_bd(uint32_t periph_clk, uint32_t bd){
 	return (uint16_t)((periph_clk + bd/2U)/bd);

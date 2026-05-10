@@ -1,4 +1,4 @@
-Src/main.o: ../Src/main.c \
+Src/bsp.o: ../Src/bsp.c ../Inc/bsp.h \
  C:/pjalan/Bootloader/bootloader/Device/Include/stm32f4xx.h \
  C:/pjalan/Bootloader/bootloader/Device/Include/stm32f407xx.h \
  C:/pjalan/Bootloader/bootloader/CMSIS/Include/core_cm4.h \
@@ -7,6 +7,7 @@ Src/main.o: ../Src/main.c \
  C:/pjalan/Bootloader/bootloader/CMSIS/Include/cmsis_gcc.h \
  C:/pjalan/Bootloader/bootloader/CMSIS/Include/mpu_armv7.h \
  C:/pjalan/Bootloader/bootloader/Device/Include/system_stm32f4xx.h
+../Inc/bsp.h:
 C:/pjalan/Bootloader/bootloader/Device/Include/stm32f4xx.h:
 C:/pjalan/Bootloader/bootloader/Device/Include/stm32f407xx.h:
 C:/pjalan/Bootloader/bootloader/CMSIS/Include/core_cm4.h:

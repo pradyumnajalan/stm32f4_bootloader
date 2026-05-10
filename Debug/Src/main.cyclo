@@ -1,1 +1,6 @@
-../Src/main.c:7:5:main	1
+../Src/main.c:19:6:jmp_to_default_app	2
+../Src/main.c:42:6:jmp_to_app2	2
+../Src/main.c:66:6:jmp_to_fapp	2
+../Src/main.c:90:5:main	4
+../Src/main.c:136:13:uart_callback	1
+../Src/main.c:143:6:USART2_IRQHandler	2

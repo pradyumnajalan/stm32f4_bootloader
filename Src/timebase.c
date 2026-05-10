@@ -1,9 +1,9 @@
-#include <stdint.h>
 #include "timebase.h"
 #include "stm32f4xx.h"
 
 
 #define ONE_SEC_LOAD		16000000
+#define ONE_MSEC_LOAD		16000
 #define TICK_FREQ			1
 #define MAX_DELAY			0xFFFFFFFF
 
@@ -45,7 +45,7 @@ void timebase_init(void){
 	__disable_irq();
 
 	/*Load the timer with number of clock cycle per second*/
-	SysTick->LOAD = ONE_SEC_LOAD - 1;
+	SysTick->LOAD = ONE_MSEC_LOAD - 1;
 
 	/* clear SysTick current value register*/
 	SysTick->VAL = 0;

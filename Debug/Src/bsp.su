@@ -1,0 +1,2 @@
+../Src/bsp.c:6:6:bsp_init	4	static
+../Src/bsp.c:18:6:read_btn	4	static

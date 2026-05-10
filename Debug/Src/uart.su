@@ -1,5 +1,6 @@
+C:/pjalan/Bootloader/bootloader/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
 ../Src/uart.c:11:5:__io_putchar	16	static
-../Src/uart.c:17:6:boot_uart_init	8	static
-../Src/uart.c:57:13:uart_write	16	static
-../Src/uart.c:69:17:compute_bd	16	static
-../Src/uart.c:73:13:set_uart_bd	16	static
+../Src/uart.c:17:6:system_uart_init	8	static
+../Src/uart.c:64:13:uart_write	16	static
+../Src/uart.c:75:17:compute_bd	16	static
+../Src/uart.c:79:13:set_uart_bd	16	static
